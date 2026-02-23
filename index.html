@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebAroundUs - ლამაზი და მომგებიანი ვებსაიტები თქვენი ბიზნესისთვის</title>
+  <meta name="description" content="WebAroundUs ქმნის სწრაფ, მიმზიდველ, მობილურზე მორგებულ ვებსაიტებს მცირე ბიზნესებისა და დიდი კომპანიებისთვის თბილისში. 500 ლარიდან.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Noto+Sans+Georgian:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo"><span class="logo-icon">&#9670;</span>Web<span class="logo-accent">AroundUs</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" data-ka="ჩვენს შესახებ" data-en="About">ჩვენს შესახებ</a></li>
+        <li><a href="#work" data-ka="ნამუშევრები" data-en="Our Work">ნამუშევრები</a></li>
+        <li><a href="#services" data-ka="სერვისები" data-en="Services">სერვისები</a></li>
+        <li><a href="#why-us" data-ka="რატომ ჩვენ" data-en="Why Us">რატომ ჩვენ</a></li>
+        <li><a href="#contact" class="nav-cta" data-ka="დაგვიკავშირდით" data-en="Get in Touch">დაგვიკავშირდით</a></li>
+      </ul>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn active" data-lang="ka">GE</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="hero" id="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-content">
+      <div class="hero-badge" data-animate="fade-up"><span class="badge-dot"></span><span data-ka="ვიღებთ ახალ პროექტებს" data-en="Available for new projects">ვიღებთ ახალ პროექტებს</span></div>
+      <h1 class="hero-title hero-title-left" data-animate="fade-up" data-delay="100">
+        <span class="hero-line hero-line-1" style="white-space:nowrap" data-ka="ლამაზი და მომგებიანი" data-en="Beautiful &amp; Profitable">ლამაზი და მომგებიანი</span>
+        <span class="hero-gradient-text hero-line hero-line-2" data-ka="ვებსაიტები" data-en="Websites">ვებსაიტები</span>
+        <span class="hero-line hero-line-3" data-ka="თქვენი ბიზნესისთვის" data-en="for Your Business">თქვენი ბიზნესისთვის</span>
+      </h1>
+<div class="hero-actions" data-animate="fade-up" data-delay="300">
+        <a href="#contact" class="btn btn-primary"><span data-ka="დაგვიკავშირდით" data-en="Get in Touch">დაგვიკავშირდით</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#work" class="btn btn-secondary"><span data-ka="ნახეთ ნამუშევრები" data-en="See Our Work">ნახეთ ნამუშევრები</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+      </div>
+      <div class="hero-stats" data-animate="fade-up" data-delay="400">
+        <div class="stat"><span class="stat-number" data-count="250">0</span><span class="stat-plus">+</span><span class="stat-label" data-ka="შესრულებული პროექტი" data-en="Projects Delivered">შესრულებული პროექტი</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-number" data-count="2">0</span><span class="stat-label" data-ka="წლიანი გამოცდილება" data-en="Years of Experience">წლიანი გამოცდილება</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-number" data-count="100">0</span><span class="stat-plus">%</span><span class="stat-label" data-ka="კმაყოფილი კლიენტი" data-en="Happy Clients">კმაყოფილი კლიენტი</span></div>
+      </div>
+            <p class="hero-subtitle hero-subtitle-bottom" data-animate="fade-up" data-delay="200" data-ka="თანამედროვე ვებსაიტები მცირე ბიზნესისა და დიდი კომპანიებისთვის. ჩვენ ვქმნით სწრაფ, მიმზიდველ, მობილურზე მორგებულ ვებსაიტებს, რომლებიც იზიდავენ რეალურ მომხმარებლებს და გეხმარებიან მეტ გაყიდვებში." data-en="Modern websites for small businesses and big companies. We create fast, stunning, mobile-friendly websites that attract real customers and help you sell more.">თანამედროვე ვებსაიტები მცირე ბიზნესისა და დიდი კომპანიებისთვის. ჩვენ ვქმნით სწრაფ, მიმზიდველ, მობილურზე მორგებულ ვებსაიტებს, რომლებიც იზიდავენ რეალურ მომხმარებლებს და გეხმარებიან მეტ გაყიდვებში.</p>
+    </div>
+    <div class="hero-scroll-indicator"><div class="scroll-line"></div></div>
+  </section>
+
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag" data-ka="ჩვენს შესახებ" data-en="About Us">ჩვენს შესახებ</span>
+        <h2 class="section-title"><span data-ka="რატომ" data-en="Why">რატომ</span> <span class="gradient-text">WebAroundUs</span>?</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-text" data-animate="fade-up" data-delay="100">
+          <p class="about-lead" data-ka="ჩვენ ვართ პატარა, მაგრამ გამოცდილი გუნდი, რომლებიც ვებსაიტებს ვაშენებთ გატაცებით და ყოველი დეტალის მიმართ ყურადღებით." data-en="We are a small but highly experienced team that builds websites with passion and attention to every detail.">ჩვენ ვართ პატარა, მაგრამ გამოცდილი გუნდი, რომლებიც ვებსაიტებს ვაშენებთ გატაცებით და ყოველი დეტალის მიმართ ყურადღებით.</p>
+          <p data-ka="ბოლო 2 წლის განმავლობაში ჩვენ <strong>250-ზე მეტ ბიზნესს</strong> დავეხმარეთ ონლაინ გასვლაში — ადგილობრივი რესტორნებიდან, სილამაზის სალონებიდან და მაღაზიებიდან დიდ კომპანიებამდე." data-en="In the last 2 years we have helped <strong>250+ businesses</strong> go online — from local restaurants, beauty salons, and shops to large companies.">ბოლო 2 წლის განმავლობაში ჩვენ <strong>250-ზე მეტ ბიზნესს</strong> დავეხმარეთ ონლაინ გასვლაში — ადგილობრივი რესტორნებიდან, სილამაზის სალონებიდან და მაღაზიებიდან დიდ კომპანიებამდე.</p>
+          <p class="about-mission" data-ka="ჩვენი მისია მარტივია: თქვენი ბიზნესი ონლაინ ისე კარგად გამოიყურებოდეს, რომ ყველა ვიზიტორმა იფიქროს:" data-en="Our mission is simple: Make your business look so good online that every visitor thinks:">ჩვენი მისია მარტივია: თქვენი ბიზნესი ონლაინ ისე კარგად გამოიყურებოდეს, რომ ყველა ვიზიტორმა იფიქროს:</p>
+          <blockquote class="about-quote" data-ka="„სწორედ აქედან მინდა შეძენა."" data-en="&quot;This is exactly where I want to buy from.&quot;">„სწორედ აქედან მინდა შეძენა."</blockquote>
+        </div>
+        <div class="about-features" data-animate="fade-up" data-delay="200">
+          <div class="about-feature"><div class="feature-icon">🎨</div><h3 data-ka="პრემიუმ დიზაინი" data-en="Premium Design">პრემიუმ დიზაინი</h3><p data-ka="პიქსელ-სრულყოფილი დიზაინი უახლესი 2026 ტრენდებით" data-en="Pixel-perfect designs that match the latest 2026 trends">პიქსელ-სრულყოფილი დიზაინი უახლესი 2026 ტრენდებით</p></div>
+          <div class="about-feature"><div class="feature-icon">⚡</div><h3 data-ka="ელვის სისწრაფე" data-en="Lightning Fast">ელვის სისწრაფე</h3><p data-ka="ოპტიმიზირებული შესრულება საუკეთესო გამოცდილებისთვის" data-en="Optimized performance for the best user experience">ოპტიმიზირებული შესრულება საუკეთესო გამოცდილებისთვის</p></div>
+          <div class="about-feature"><div class="feature-icon">📱</div><h3 data-ka="მობილური პირველი" data-en="Mobile First">მობილური პირველი</h3><p data-ka="იდეალურად გამოიყურება ყველა მოწყობილობაზე" data-en="Looks perfect on every device, every screen size">იდეალურად გამოიყურება ყველა მოწყობილობაზე</p></div>
+          <div class="about-feature"><div class="feature-icon">🔒</div><h3 data-ka="უსაფრთხო და საიმედო" data-en="Secure &amp; Reliable">უსაფრთხო და საიმედო</h3><p data-ka="აშენებული უსაფრთხოებისა და სტაბილურობის გათვალისწინებით" data-en="Built with security and stability from the ground up">აშენებული უსაფრთხოებისა და სტაბილურობის გათვალისწინებით</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section work" id="work">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag" data-ka="პორტფოლიო" data-en="Portfolio">პორტფოლიო</span>
+        <h2 class="section-title"><span data-ka="ჩვენი" data-en="Our">ჩვენი</span> <span class="gradient-text" data-ka="ნამუშევრები" data-en="Work">ნამუშევრები</span></h2>
+        <p class="section-desc" data-ka="რეალური ვებსაიტები, რომლებიც ჩვენ ავაშენეთ რეალური ბიზნესებისთვის" data-en="Real websites we have built for real businesses">რეალური ვებსაიტები, რომლებიც ჩვენ ავაშენეთ რეალური ბიზნესებისთვის</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card" data-animate="fade-up" data-delay="100">
+          <div class="project-preview restaurant-preview">
+            <div class="project-mockup">
+              <div class="mockup-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="mockup-url">sulkhan-restaurant.ge</span></div>
+              <div class="mockup-content restaurant-content">
+                <div class="mock-nav"><span class="mock-logo" data-ka="სულხანი" data-en="Sulkhan">სულხანი</span><div class="mock-links"><span></span><span></span><span></span></div></div>
+                <div class="mock-hero-img restaurant-hero"><span class="mock-food-icon">🍖</span></div>
+                <div class="mock-heading" data-ka="ქართული სამზარეულო" data-en="Georgian Cuisine">ქართული სამზარეულო</div>
+                <div class="mock-btn" data-ka="მაგიდის დაჯავშნა" data-en="Book a Table">მაგიდის დაჯავშნა</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info"><span class="project-tag" data-ka="რესტორანი" data-en="Restaurant">რესტორანი</span><h3 data-ka="რესტორანი „სულხანი"" data-en="Restaurant &quot;Sulkhan&quot;">რესტორანი „სულხანი"</h3><p data-ka="სრული თანამედროვე ვებსაიტი + ონლაინ მაგიდის დაჯავშნის სისტემა" data-en="Full modern website + online table booking system">სრული თანამედროვე ვებსაიტი + ონლაინ მაგიდის დაჯავშნის სისტემა</p></div>
+        </div>
+        <div class="project-card" data-animate="fade-up" data-delay="200">
+          <div class="project-preview salon-preview">
+            <div class="project-mockup">
+              <div class="mockup-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="mockup-url">luna-beauty.ge</span></div>
+              <div class="mockup-content salon-content">
+                <div class="mock-nav"><span class="mock-logo">✦ Luna</span><div class="mock-links"><span></span><span></span><span></span></div></div>
+                <div class="mock-hero-img salon-hero"><span class="mock-food-icon">💅</span></div>
+                <div class="mock-heading" data-ka="სილამაზე და ჯანმრთელობა" data-en="Beauty &amp; Wellness">სილამაზე და ჯანმრთელობა</div>
+                <div class="mock-btn salon-btn" data-ka="ვიზიტის დაჯავშნა" data-en="Book Appointment">ვიზიტის დაჯავშნა</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info"><span class="project-tag" data-ka="სილამაზე" data-en="Beauty">სილამაზე</span><h3 data-ka="Luna სილამაზის სალონი" data-en="Luna Beauty Salon">Luna სილამაზის სალონი</h3><p data-ka="ელეგანტური, ქალური დიზაინი, რომელიც 24/7 აჯავშნებს ვიზიტებს" data-en="Elegant, feminine design that books appointments 24/7">ელეგანტური, ქალური დიზაინი, რომელიც 24/7 აჯავშნებს ვიზიტებს</p></div>
+        </div>
+        <div class="project-card" data-animate="fade-up" data-delay="300">
+          <div class="project-preview eco-preview">
+            <div class="project-mockup">
+              <div class="mockup-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="mockup-url">ecoshop.ge</span></div>
+              <div class="mockup-content eco-content">
+                <div class="mock-nav"><span class="mock-logo">🌿 EcoShop</span><div class="mock-links"><span></span><span></span><span></span></div></div>
+                <div class="mock-hero-img eco-hero"><span class="mock-food-icon">🛒</span></div>
+                <div class="mock-heading" data-ka="ეკო პროდუქტები" data-en="Eco Products">ეკო პროდუქტები</div>
+                <div class="mock-btn eco-btn" data-ka="შეიძინე ახლა" data-en="Shop Now">შეიძინე ახლა</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-info"><span class="project-tag" data-ka="ონლაინ მაღაზია" data-en="E-Commerce">ონლაინ მაღაზია</span><h3 data-ka="EcoShop ონლაინ მაღაზია" data-en="EcoShop Online Store">EcoShop ონლაინ მაღაზია</h3><p data-ka="სუფთა ელექტრონული კომერციის საიტი — გაყიდვები 3-ჯერ გაიზარდა გაშვების შემდეგ" data-en="Clean e-commerce site — sales increased 3x after launch">სუფთა ელექტრონული კომერციის საიტი — გაყიდვები 3-ჯერ გაიზარდა გაშვების შემდეგ</p></div>
+        </div>
+      </div>
+      <div class="projects-cta" data-animate="fade-up" data-delay="400"><p class="coming-soon" data-ka="მალე დაემატება მეტი პროექტი…" data-en="More projects coming soon…">მალე დაემატება მეტი პროექტი…</p><a href="#contact" class="btn btn-outline" data-ka="ყველა პროექტის ნახვა →" data-en="View All Projects →">ყველა პროექტის ნახვა →</a></div>
+    </div>
+  </section>
+
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag" data-ka="სერვისები" data-en="Services">სერვისები</span>
+        <h2 class="section-title"><span data-ka="რას" data-en="What We">რას</span> <span class="gradient-text" data-ka="გთავაზობთ" data-en="Offer">გთავაზობთ</span></h2>
+        <p class="section-desc" data-ka="ჩვენ ვაშენებთ ზუსტად იმას, რაც თქვენს ბიზნესს სჭირდება" data-en="We build exactly what your business needs">ჩვენ ვაშენებთ ზუსტად იმას, რაც თქვენს ბიზნესს სჭირდება</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" data-animate="fade-up" data-delay="100"><div class="service-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div><h3 data-ka="ლენდინგ გვერდები" data-en="Landing Pages">ლენდინგ გვერდები</h3><p data-ka="ერთგვერდიანი თანამედროვე ვებსაიტები — იდეალური უმეტესი ბიზნესებისთვის" data-en="One-page modern landing websites — perfect for most businesses">ერთგვერდიანი თანამედროვე ვებსაიტები — იდეალური უმეტესი ბიზნესებისთვის</p></div>
+        <div class="service-card" data-animate="fade-up" data-delay="150"><div class="service-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3 data-ka="კორპორატიული საიტები" data-en="Corporate Websites">კორპორატიული საიტები</h3><p data-ka="სრული მრავალგვერდიანი კორპორატიული ვებსაიტები თქვენი ბრენდისთვის" data-en="Full multi-page corporate websites that represent your brand">სრული მრავალგვერდიანი კორპორატიული ვებსაიტები თქვენი ბრენდისთვის</p></div>
+        <div class="service-card" data-animate="fade-up" data-delay="200"><div class="service-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div><h3 data-ka="ონლაინ მაღაზიები" data-en="Online Stores">ონლაინ მაღაზიები</h3><p data-ka="ელექტრონული კომერციის გადაწყვეტილებები, რომლებიც ვიზიტორებს მყიდველებად აქცევს" data-en="E-commerce solutions that turn visitors into paying customers">ელექტრონული კომერციის გადაწყვეტილებები, რომლებიც ვიზიტორებს მყიდველებად აქცევს</p></div>
+        <div class="service-card" data-animate="fade-up" data-delay="250"><div class="service-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><h3 data-ka="ბლოგი + SEO" data-en="Blog + SEO">ბლოგი + SEO</h3><p data-ka="კონტენტ სისტემები, რომ Google-მა გიპოვოთ და ორგანული ტრაფიკი მოგიტანოთ" data-en="Content systems so Google finds you and brings organic traffic">კონტენტ სისტემები, რომ Google-მა გიპოვოთ და ორგანული ტრაფიკი მოგიტანოთ</p></div>
+        <div class="service-card" data-animate="fade-up" data-delay="300"><div class="service-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3 data-ka="ტექნიკური მხარდაჭერა" data-en="Maintenance &amp; Updates">ტექნიკური მხარდაჭერა</h3><p data-ka="მუდმივი მხარდაჭერა ყველაფრის შეუფერხებლად მუშაობისთვის" data-en="Ongoing support to keep everything running smoothly">მუდმივი მხარდაჭერა ყველაფრის შეუფერხებლად მუშაობისთვის</p></div>
+      </div>
+      <div class="pricing-highlight" data-animate="fade-up" data-delay="350">
+        <div class="pricing-card"><div class="pricing-label" data-ka="ფასი იწყება" data-en="Starting from">ფასი იწყება</div><div class="pricing-amount">500 <span data-ka="₾" data-en="GEL">₾</span></div><div class="pricing-note" data-ka="ფასი დამოკიდებულია მხოლოდ თქვენს სურვილებზე" data-en="Price depends only on your wishes — no hidden fees">ფასი დამოკიდებულია მხოლოდ თქვენს სურვილებზე</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why-us" id="why-us">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag" data-ka="უპირატესობები" data-en="Benefits">უპირატესობები</span>
+        <h2 class="section-title"><span data-ka="რატომ გვირჩევენ" data-en="Why Clients">რატომ გვირჩევენ</span> <span class="gradient-text" data-ka="კლიენტები" data-en="Choose Us">კლიენტები</span></h2>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card" data-animate="fade-up" data-delay="100"><div class="benefit-icon">⏱️</div><h3 data-ka="7–14 დღე" data-en="7–14 Days">7–14 დღე</h3><p data-ka="ვებსაიტი მზადაა რეკორდულ დროში" data-en="Website ready in record time">ვებსაიტი მზადაა რეკორდულ დროში</p></div>
+        <div class="benefit-card" data-animate="fade-up" data-delay="150"><div class="benefit-icon">📱</div><h3 data-ka="100% მობილური" data-en="100% Mobile">100% მობილური</h3><p data-ka="იდეალურად გამოიყურება ტელეფონებსა და ტაბლეტებზე" data-en="Looks perfect on phones &amp; tablets">იდეალურად გამოიყურება ტელეფონებსა და ტაბლეტებზე</p></div>
+        <div class="benefit-card" data-animate="fade-up" data-delay="200"><div class="benefit-icon">🚀</div><h3 data-ka="სუპერ სწრაფი" data-en="Super Fast">სუპერ სწრაფი</h3><p data-ka="ელვისებური ჩატვირთვის სიჩქარე" data-en="Lightning-fast loading speed">ელვისებური ჩატვირთვის სიჩქარე</p></div>
+        <div class="benefit-card" data-animate="fade-up" data-delay="250"><div class="benefit-icon">✨</div><h3 data-ka="2026 დიზაინი" data-en="2026 Design">2026 დიზაინი</h3><p data-ka="თანამედროვე, ტრენდული დიზაინის სტილი" data-en="Modern, trendy design style">თანამედროვე, ტრენდული დიზაინის სტილი</p></div>
+        <div class="benefit-card" data-animate="fade-up" data-delay="300"><div class="benefit-icon">🔒</div><h3 data-ka="დაცული და SEO" data-en="Secure &amp; SEO">დაცული და SEO</h3><p data-ka="ოპტიმიზირებული და დაცული" data-en="Optimized and protected">ოპტიმიზირებული და დაცული</p></div>
+        <div class="benefit-card" data-animate="fade-up" data-delay="350"><div class="benefit-icon">🎁</div><h3 data-ka="უფასო მხარდაჭერა" data-en="Free Support">უფასო მხარდაჭერა</h3><p data-ka="უფასო კონსულტაცია + 1 თვე უფასო მხარდაჭერა" data-en="Free consultation + 1 month support">უფასო კონსულტაცია + 1 თვე უფასო მხარდაჭერა</p></div>
+      </div>
+    </div>
+  </section>
+
+<!-- ===== HOW WE WORK ===== -->
+  <section class="section process" id="process">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag" data-ka="პროცესი" data-en="Process">პროცესი</span>
+        <h2 class="section-title"><span data-ka="როგორ" data-en="How We">როგორ</span> <span class="gradient-text" data-ka="ვმუშაობთ" data-en="Work">ვმუშაობთ</span></h2>
+        <p class="section-desc" data-ka="მარტივი და გამჭვირვალე პროცესი დასაწყისიდან დასასრულამდე" data-en="Simple and transparent process from start to finish">მარტივი და გამჭვირვალე პროცესი დასაწყისიდან დასასრულამდე</p>
+      </div>
+      <div class="process-timeline">
+        <div class="process-step" data-animate="fade-up" data-delay="100">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3 data-ka="კონსულტაცია" data-en="Consultation">კონსულტაცია</h3>
+            <p data-ka="გვიყვებით თქვენს ბიზნესზე, მიზნებსა და სურვილებზე. ერთად ვადგენთ გეგმას." data-en="Tell us about your business, goals, and wishes. Together we create a plan.">გვიყვებით თქვენს ბიზნესზე, მიზნებსა და სურვილებზე. ერთად ვადგენთ გეგმას.</p>
+          </div>
+          <div class="step-icon">💬</div>
+        </div>
+        <div class="process-connector" data-animate="fade-up" data-delay="150"></div>
+        <div class="process-step" data-animate="fade-up" data-delay="200">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3 data-ka="დიზაინი" data-en="Design">დიზაინი</h3>
+            <p data-ka="ვქმნით უნიკალურ დიზაინს თქვენი ბრენდის სტილში. თქვენ ამტკიცებთ ყოველ ეტაპს." data-en="We create a unique design in your brand style. You approve every stage.">ვქმნით უნიკალურ დიზაინს თქვენი ბრენდის სტილში. თქვენ ამტკიცებთ ყოველ ეტაპს.</p>
+          </div>
+          <div class="step-icon">🎨</div>
+        </div>
+        <div class="process-connector" data-animate="fade-up" data-delay="250"></div>
+        <div class="process-step" data-animate="fade-up" data-delay="300">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3 data-ka="დეველოპმენტი" data-en="Development">დეველოპმენტი</h3>
+            <p data-ka="ვაშენებთ სწრაფ, რესპონსიულ ვებსაიტს უახლესი ტექნოლოგიებით." data-en="We build a fast, responsive website with the latest technologies.">ვაშენებთ სწრაფ, რესპონსიულ ვებსაიტს უახლესი ტექნოლოგიებით.</p>
+          </div>
+          <div class="step-icon">⚡</div>
+        </div>
+        <div class="process-connector" data-animate="fade-up" data-delay="350"></div>
+        <div class="process-step" data-animate="fade-up" data-delay="400">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <h3 data-ka="გაშვება" data-en="Launch">გაშვება</h3>
+            <p data-ka="ვამოწმებთ ყველაფერს, ვუშვებთ ვებსაიტს და ვუზრუნველვყოფთ მხარდაჭერას." data-en="We test everything, launch the website, and provide ongoing support.">ვამოწმებთ ყველაფერს, ვუშვებთ ვებსაიტს და ვუზრუნველვყოფთ მხარდაჭერას.</p>
+          </div>
+          <div class="step-icon">🚀</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section contact" id="contact">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-info" data-animate="fade-up">
+          <span class="section-tag" data-ka="კონტაქტი" data-en="Contact">კონტაქტი</span>
+          <h2 class="section-title"><span data-ka="მზად ხართ თქვენი" data-en="Ready to Grow">მზად ხართ თქვენი</span><br><span data-ka="ბიზნესის გაზრდისთვის" data-en="Your Business">ბიზნესის გაზრდისთვის</span> <span class="gradient-text" data-ka="ონლაინ" data-en="Online">ონლაინ</span>?</h2>
+          <p class="contact-lead"><span data-ka="შევქმნათ ვებსაიტი, რომელიც თქვენს მომხმარებლებს" data-en="Let's create a website that leaves a positive impression on your customers">შევქმნათ ვებსაიტი, რომელიც თქვენს მომხმარებლებს</span> <strong data-ka="პოზიტიურ" data-en="positive">პოზიტიურ</strong> <span data-ka="შთაბეჭდილებას დაუტოვებს." data-en=".">შთაბეჭდილებას დაუტოვებს.</span></p>
+          <p class="contact-free"><span data-ka="დაგვიკავშირდით დღესვე — პირველი კონსულტაცია ყოველთვის" data-en="Contact us today — first consultation is always">დაგვიკავშირდით დღესვე — პირველი კონსულტაცია ყოველთვის</span> <strong data-ka="უფასოა" data-en="free">უფასოა</strong>.</p>
+          <div class="contact-details">
+            <a href="mailto:hello@webaroundus.com" class="contact-item"><span class="contact-icon">📩</span><span>hello@webaroundus.com</span></a>
+            <a href="tel:+995" class="contact-item"><span class="contact-icon">📞</span><span>+995 ___ ___ ___</span></a>
+            <div class="contact-item"><span class="contact-icon">📍</span><span data-ka="თბილისი, საქართველო" data-en="Tbilisi, Georgia">თბილისი, საქართველო</span></div>
+          </div>
+        </div>
+        <div class="contact-form-wrapper" data-animate="fade-up" data-delay="200">
+          <form class="contact-form" id="contactForm">
+            <h3 data-ka="დაიწყეთ თქვენი პროექტი" data-en="Start Your Project">დაიწყეთ თქვენი პროექტი</h3>
+            <div class="form-group"><input type="text" id="name" name="name" data-placeholder-ka="თქვენი სახელი" data-placeholder-en="Your Name" placeholder="თქვენი სახელი" required></div>
+            <div class="form-group"><input type="email" id="email" name="email" data-placeholder-ka="თქვენი ელ-ფოსტა" data-placeholder-en="Your Email" placeholder="თქვენი ელ-ფოსტა" required></div>
+            <div class="form-group">
+              <select id="service-select" name="service">
+                <option value="" disabled selected data-ka="აირჩიეთ სერვისი" data-en="Choose a Service">აირჩიეთ სერვისი</option>
+                <option value="landing" data-ka="ლენდინგ გვერდი" data-en="Landing Page">ლენდინგ გვერდი</option>
+                <option value="corporate" data-ka="კორპორატიული საიტი" data-en="Corporate Website">კორპორატიული საიტი</option>
+                <option value="ecommerce" data-ka="ონლაინ მაღაზია" data-en="Online Store">ონლაინ მაღაზია</option>
+                <option value="blog" data-ka="ბლოგი + SEO" data-en="Blog + SEO">ბლოგი + SEO</option>
+                <option value="other" data-ka="სხვა" data-en="Other">სხვა</option>
+              </select>
+            </div>
+            <div class="form-group"><textarea id="message" name="message" data-placeholder-ka="მოგვიყევით თქვენი პროექტის შესახებ..." data-placeholder-en="Tell us about your project..." placeholder="მოგვიყევით თქვენი პროექტის შესახებ..." rows="4"></textarea></div>
+            <button type="submit" class="btn btn-primary btn-full"><span data-ka="დაიწყეთ პროექტი →" data-en="Start Your Project →">დაიწყეთ პროექტი →</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag" data-ka="კითხვები" data-en="FAQ">კითხვები</span>
+        <h2 class="section-title"><span data-ka="ხშირად დასმული" data-en="Frequently Asked">ხშირად დასმული</span> <span class="gradient-text" data-ka="კითხვები" data-en="Questions">კითხვები</span></h2>
+      </div>
+      <div class="faq-list" data-animate="fade-up" data-delay="100">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span data-ka="რა ღირს ვებსაიტის შექმნა?" data-en="How much does it cost to create a website?">რა ღირს ვებსაიტის შექმნა?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p data-ka="ფასი იწყება 500 ლარიდან და დამოკიდებულია თქვენს მოთხოვნებზე. ლენდინგ გვერდი შეიძლება 500–1000₾ დაჯდეს, ხოლო სრული ონლაინ მაღაზია — მეტი. პირველი კონსულტაცია უფასოა!" data-en="Prices start from 500 GEL and depend on your requirements. A landing page can cost 500–1000₾, while a full online store may cost more. First consultation is free!">ფასი იწყება 500 ლარიდან და დამოკიდებულია თქვენს მოთხოვნებზე. ლენდინგ გვერდი შეიძლება 500–1000₾ დაჯდეს, ხოლო სრული ონლაინ მაღაზია — მეტი. პირველი კონსულტაცია უფასოა!</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span data-ka="რამდენ ხანში მზადდება ვებსაიტი?" data-en="How long does it take to build a website?">რამდენ ხანში მზადდება ვებსაიტი?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p data-ka="საშუალოდ 7–14 სამუშაო დღე. მარტივი ლენდინგ გვერდი შეიძლება 5 დღეშიც მზად იყოს, ხოლო კომპლექსურ პროექტებს მეტი დრო სჭირდება." data-en="On average, 7–14 business days. A simple landing page can be ready in 5 days, while complex projects take more time.">საშუალოდ 7–14 სამუშაო დღე. მარტივი ლენდინგ გვერდი შეიძლება 5 დღეშიც მზად იყოს, ხოლო კომპლექსურ პროექტებს მეტი დრო სჭირდება.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span data-ka="შემიძლია თვითონ ვმართო ვებსაიტი?" data-en="Can I manage the website myself?">შემიძლია თვითონ ვმართო ვებსაიტი?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p data-ka="რა თქმა უნდა! ჩვენ ვაშენებთ ადვილად მართვად ვებსაიტებს და გთავაზობთ ვიდეო ინსტრუქციებს. პლუს, 1 თვე უფასო მხარდაჭერა გაქვთ." data-en="Of course! We build easy-to-manage websites and provide video tutorials. Plus, you get 1 month of free support.">რა თქმა უნდა! ჩვენ ვაშენებთ ადვილად მართვად ვებსაიტებს და გთავაზობთ ვიდეო ინსტრუქციებს. პლუს, 1 თვე უფასო მხარდაჭერა გაქვთ.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span data-ka="მობილურზეც კარგად გამოჩნდება?" data-en="Will it look good on mobile too?">მობილურზეც კარგად გამოჩნდება?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p data-ka="აბსოლუტურად! ყველა ჩვენი ვებსაიტი 100% რესპონსიულია — იდეალურად გამოიყურება ტელეფონზე, ტაბლეტსა და კომპიუტერზე." data-en="Absolutely! All our websites are 100% responsive — they look perfect on phones, tablets, and computers.">აბსოლუტურად! ყველა ჩვენი ვებსაიტი 100% რესპონსიულია — იდეალურად გამოიყურება ტელეფონზე, ტაბლეტსა და კომპიუტერზე.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span data-ka="SEO ოპტიმიზაცია შედის ფასში?" data-en="Is SEO optimization included in the price?">SEO ოპტიმიზაცია შედის ფასში?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p data-ka="დიახ, ბაზისური SEO ოპტიმიზაცია შედის ყველა პაკეტში. ეს მოიცავს Google-ის ინდექსაციას, მეტა ტეგებს, სწრაფ ჩატვირთვას და მობილური ვერსიის ოპტიმიზაციას." data-en="Yes, basic SEO optimization is included in all packages. This includes Google indexing, meta tags, fast loading, and mobile optimization.">დიახ, ბაზისური SEO ოპტიმიზაცია შედის ყველა პაკეტში. ეს მოიცავს Google-ის ინდექსაციას, მეტა ტეგებს, სწრაფ ჩატვირთვას და მობილური ვერსიის ოპტიმიზაციას.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/995" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo"><span class="logo-icon">◆</span>Web<span class="logo-accent">AroundUs</span></a>
+          <p data-ka="ლამაზი და მომგებიანი ვებსაიტები თქვენი ბიზნესისთვის" data-en="Beautiful &amp; Profitable Websites for Your Business">ლამაზი და მომგებიანი ვებსაიტები თქვენი ბიზნესისთვის</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook" class="social-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="#" aria-label="Instagram" class="social-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="#" aria-label="TikTok" class="social-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="#about" data-ka="ჩვენს შესახებ" data-en="About">ჩვენს შესახებ</a>
+          <a href="#work" data-ka="ნამუშევრები" data-en="Our Work">ნამუშევრები</a>
+          <a href="#services" data-ka="სერვისები" data-en="Services">სერვისები</a>
+          <a href="#faq" data-ka="კითხვები" data-en="FAQ">კითხვები</a>
+          <a href="#contact" data-ka="კონტაქტი" data-en="Contact">კონტაქტი</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-ka="© 2026 WebAroundUs. ყველა უფლება დაცულია." data-en="© 2026 WebAroundUs. All rights reserved.">© 2026 WebAroundUs. ყველა უფლება დაცულია.</p>
+        <p data-ka="შექმნილია ♥-ით თბილისში, საქართველო" data-en="Made with ♥ in Tbilisi, Georgia">შექმნილია ♥-ით თბილისში, საქართველო</p>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
