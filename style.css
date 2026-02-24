@@ -432,7 +432,8 @@ html[lang="ka"] .hero-title {
   max-width: 600px;
   margin: 0 auto 40px;
   line-height: 1.7;
-  text-shadow: 0 0 12px rgba(255, 255, 255, .2), 0 0 40px rgba(255, 255, 255, .08), 0 0 80px rgba(255, 255, 255, .17);
+  color: #e4e4e7;
+  text-shadow: 0 0 7px rgba(255, 255, 255, .4), 0 0 20px rgba(255, 255, 255, .25), 0 0 50px rgba(255, 255, 255, .15), 0 0 90px rgba(255, 255, 255, .1);
 }
 
 .hero-actions {
