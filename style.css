@@ -412,6 +412,9 @@ html[lang="ka"] .hero-title {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  padding: 0 4px 6px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .hero-title-left {
@@ -541,6 +544,8 @@ html[lang="ka"] .hero-title {
   align-self: center;
   animation-name: wrapReveal2;
   animation-delay: 0.6s;
+  line-height: 1.3;
+  padding-bottom: 4px;
 }
 
 .hero-line-3 {
