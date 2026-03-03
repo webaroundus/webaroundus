@@ -161,12 +161,12 @@ html[lang="ka"] * {
   font-weight: 900;
   font-size: 1.6rem;
   letter-spacing: -0.04em;
-  color: #1a2340;
+  color: #a8b4d4;
   position: relative;
   z-index: 2;
   text-shadow:
-    0 0 8px rgba(26, 35, 64, 0.4),
-    0 0 16px rgba(26, 35, 64, 0.2);
+    0 0 8px rgba(168, 180, 212, 0.4),
+    0 0 16px rgba(168, 180, 212, 0.2);
 }
 
 .wau-au {
@@ -190,8 +190,8 @@ html[lang="ka"] * {
 
 .wau-logo:hover .wau-w {
   text-shadow:
-    0 0 12px rgba(26, 35, 64, 0.6),
-    0 0 24px rgba(26, 35, 64, 0.3);
+    0 0 12px rgba(168, 180, 212, 0.6),
+    0 0 24px rgba(168, 180, 212, 0.3);
 }
 
 .wau-logo:hover .wau-au {
