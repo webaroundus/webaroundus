@@ -684,13 +684,13 @@ html[lang="ka"] .section-title {
 }
 
 
-/* ===== ABOUT CODE BACKGROUND ===== */
-.about {
+/* ===== CODE SYSTEM BACKGROUND ===== */
+.code-bg-wrapper {
   position: relative;
   overflow: hidden;
 }
 
-.about-code-bg {
+.code-system-canvas {
   position: absolute;
   top: 0;
   left: 0;
@@ -700,7 +700,12 @@ html[lang="ka"] .section-title {
   z-index: 0;
 }
 
-.about .container {
+.code-bg-wrapper .section {
+  position: relative;
+  z-index: 1;
+}
+
+.code-bg-wrapper .section .container {
   position: relative;
   z-index: 1;
 }
