@@ -534,3 +534,85 @@ window.addEventListener('scroll', () => {
 
   window.addEventListener('resize', function() { resize(); });
 })();
+
+// ===== WAU Logo Code Rain Animation =====
+(function() {
+  function initLogoCodeRain(canvasId) {
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var container = canvas.parentElement;
+    var w, h, dpr;
+    var drops = [];
+    var chars = '01<>{}();=+#*&|/\\'.split('');
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var rect = container.getBoundingClientRect();
+      w = rect.width;
+      h = rect.height;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      initDrops();
+    }
+
+    function initDrops() {
+      drops = [];
+      var colWidth = 6;
+      var numCols = Math.ceil(w / colWidth) + 2;
+      for (var i = 0; i < numCols; i++) {
+        drops.push({
+          x: i * colWidth + Math.random() * 3,
+          y: Math.random() * h * 2 - h,
+          speed: 0.2 + Math.random() * 0.6,
+          opacity: 0.15 + Math.random() * 0.5,
+          charIdx: Math.floor(Math.random() * chars.length),
+          size: 4 + Math.random() * 3,
+          trail: 2 + Math.floor(Math.random() * 4)
+        });
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, w, h);
+
+      for (var i = 0; i < drops.length; i++) {
+        var d = drops[i];
+        d.y += d.speed;
+
+        if (d.y > h + 10) {
+          d.y = -10 - Math.random() * 20;
+          d.charIdx = Math.floor(Math.random() * chars.length);
+        }
+
+        // Draw trail
+        for (var t = 0; t < d.trail; t++) {
+          var ty = d.y - t * d.size * 1.2;
+          if (ty < -10 || ty > h + 10) continue;
+          var trailAlpha = d.opacity * (1 - t / d.trail) * 0.6;
+          ctx.font = d.size + 'px monospace';
+          ctx.fillStyle = 'rgba(45, 140, 240, ' + trailAlpha + ')';
+          var ci = (d.charIdx + t) % chars.length;
+          ctx.fillText(chars[ci], d.x, ty);
+        }
+
+        // Draw head (brighter)
+        ctx.font = d.size + 'px monospace';
+        ctx.fillStyle = 'rgba(100, 200, 255, ' + (d.opacity * 0.9) + ')';
+        ctx.fillText(chars[d.charIdx], d.x, d.y);
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    resize();
+    animate();
+    window.addEventListener('resize', resize);
+  }
+
+  initLogoCodeRain('navLogoCanvas');
+  initLogoCodeRain('footerLogoCanvas');
+})();
