@@ -509,19 +509,28 @@ window.addEventListener('scroll', () => {
     animId = requestAnimationFrame(animate);
   }
 
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        isVisible = true;
-        resize();
-        animId = requestAnimationFrame(animate);
-      } else {
-        isVisible = false;
-        if (animId) cancelAnimationFrame(animId);
-      }
-    });
-  }, { threshold: 0.01 });
+  // Initialize immediately
+  resize();
+  isVisible = true;
+  animId = requestAnimationFrame(animate);
 
-  observer.observe(wrapper);
-  window.addEventListener('resize', function() { if (isVisible) resize(); });
+  // Re-check visibility on scroll for performance
+  var lastScrollCheck = 0;
+  function checkVisibility() {
+    var now = Date.now();
+    if (now - lastScrollCheck < 200) return;
+    lastScrollCheck = now;
+    var rect = wrapper.getBoundingClientRect();
+    var visible = rect.bottom > 0 && rect.top < window.innerHeight;
+    if (visible && !isVisible) {
+      isVisible = true;
+      animId = requestAnimationFrame(animate);
+    } else if (!visible && isVisible) {
+      isVisible = false;
+      if (animId) cancelAnimationFrame(animId);
+    }
+  }
+  window.addEventListener('scroll', checkVisibility, { passive: true });
+
+  window.addEventListener('resize', function() { resize(); });
 })();
