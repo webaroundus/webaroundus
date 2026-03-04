@@ -617,7 +617,7 @@ window.addEventListener('scroll', () => {
   initLogoCodeRain('footerLogoCanvas');
 })();
 
-// ===== Contact Section: Binary Code Wave Animation =====
+// ===== Contact Section: 3D Binary Code Wave Terrain =====
 (function () {
   var canvas = document.getElementById('contactWaveCanvas');
   if (!canvas) return;
@@ -627,10 +627,10 @@ window.addEventListener('scroll', () => {
   var animId;
   var isVisible = false;
 
-  // Binary characters grid
-  var cols, rows;
-  var cellW = 28, cellH = 22;
-  var chars = [];
+  // 3D terrain grid
+  var GRID_COLS = 80;
+  var GRID_ROWS = 40;
+  var charGrid = [];
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -641,50 +641,28 @@ window.addEventListener('scroll', () => {
     canvas.style.width = w + 'px';
     canvas.style.height = h + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    initChars();
+    initGrid();
   }
 
-  function initChars() {
-    cols = Math.ceil(w / cellW) + 2;
-    rows = Math.ceil(h / cellH) + 4;
-    chars = [];
-    for (var r = 0; r < rows; r++) {
-      for (var c = 0; c < cols; c++) {
-        chars.push({
+  function initGrid() {
+    charGrid = [];
+    for (var r = 0; r < GRID_ROWS; r++) {
+      for (var c = 0; c < GRID_COLS; c++) {
+        charGrid.push({
           char: Math.random() > 0.5 ? '1' : '0',
-          changeRate: 0.002 + Math.random() * 0.008
+          changeTimer: Math.random() * 100
         });
       }
     }
   }
 
-  function getWaveColor(nx, ny, wave) {
-    var r, g, b;
-    var t = nx;
-    var brightness = 0.3 + wave * 0.7;
-
-    if (t < 0.33) {
-      var lt = t / 0.33;
-      r = Math.floor(20 + lt * 40);
-      g = Math.floor(140 + lt * 30 + wave * 60);
-      b = Math.floor(220 + lt * 35);
-    } else if (t < 0.66) {
-      var lt = (t - 0.33) / 0.33;
-      r = Math.floor(60 + lt * 80 + wave * 40);
-      g = Math.floor(70 + wave * 50);
-      b = Math.floor(220 + lt * 20);
-    } else {
-      var lt = (t - 0.66) / 0.34;
-      r = Math.floor(140 + lt * 80 + wave * 40);
-      g = Math.floor(50 + lt * 30 + wave * 40);
-      b = Math.floor(200 - lt * 30);
-    }
-
-    r = Math.min(255, Math.floor(r * brightness));
-    g = Math.min(255, Math.floor(g * brightness));
-    b = Math.min(255, Math.floor(b * brightness));
-
-    return { r: r, g: g, b: b };
+  function getWaveHeight(gx, gz, time) {
+    // Multiple overlapping waves for organic terrain
+    var h1 = Math.sin(gx * 0.8 + time * 0.7) * Math.cos(gz * 0.5 + time * 0.3) * 35;
+    var h2 = Math.sin(gx * 0.4 - time * 0.5 + gz * 0.6) * 25;
+    var h3 = Math.cos(gx * 1.2 + gz * 0.3 + time * 0.9) * 15;
+    var h4 = Math.sin((gx + gz) * 0.3 + time * 0.4) * 20;
+    return h1 + h2 + h3 + h4;
   }
 
   function animate(timestamp) {
@@ -692,41 +670,108 @@ window.addEventListener('scroll', () => {
     var time = timestamp * 0.001;
     ctx.clearRect(0, 0, w, h);
 
-    ctx.font = '11px monospace';
-    ctx.textBaseline = 'middle';
+    // Perspective camera settings
+    var fov = 280;
+    var cameraY = -60;
+    var cameraZ = -3;
+    var horizonY = h * 0.25;
 
-    for (var r = 0; r < rows; r++) {
-      for (var c = 0; c < cols; c++) {
-        var idx = r * cols + c;
-        var ch = chars[idx];
+    // Render back to front (far rows first)
+    for (var r = 0; r < GRID_ROWS; r++) {
+      // Z depth: far (0) to near (GRID_ROWS)
+      var gz = (r / GRID_ROWS) * 12;
+      var depth = 1.0 + gz * 1.5;
+      var perspScale = fov / (fov + depth * 40);
 
-        if (Math.random() < ch.changeRate) {
-          ch.char = Math.random() > 0.5 ? '1' : '0';
+      // Row Y on screen (perspective)
+      var baseScreenY = horizonY + (gz - cameraZ) * perspScale * 45;
+
+      // Font size based on depth (closer = bigger)
+      var fontSize = Math.max(6, Math.floor(8 + (r / GRID_ROWS) * 14));
+      ctx.font = fontSize + 'px monospace';
+      ctx.textBaseline = 'middle';
+
+      var charSpacing = w / GRID_COLS;
+
+      for (var c = 0; c < GRID_COLS; c++) {
+        var idx = r * GRID_COLS + c;
+        var cell = charGrid[idx];
+
+        // Randomly change characters
+        cell.changeTimer -= 1;
+        if (cell.changeTimer <= 0) {
+          cell.char = Math.random() > 0.5 ? '1' : '0';
+          cell.changeTimer = 30 + Math.random() * 120;
         }
 
-        var x = c * cellW;
-        var y = r * cellH;
+        var gx = (c / GRID_COLS - 0.5) * 14;
 
-        var nx = c / cols;
-        var ny = r / rows;
+        // Get wave height at this grid point
+        var waveH = getWaveHeight(gx, gz, time);
 
-        var wave1 = Math.sin(nx * 4.5 + time * 0.6 + ny * 2.0) * 0.5 + 0.5;
-        var wave2 = Math.sin(nx * 3.0 - time * 0.4 + ny * 3.5) * 0.5 + 0.5;
-        var wave3 = Math.sin((nx + ny) * 3.0 + time * 0.8) * 0.5 + 0.5;
-        var wave = (wave1 * 0.5 + wave2 * 0.3 + wave3 * 0.2);
+        // Project to screen
+        var screenX = w * 0.5 + gx * perspScale * 50;
+        var screenY = baseScreenY + (waveH + cameraY) * perspScale;
 
-        var displacement = wave * 12 - 6;
-        var drawY = y + displacement;
+        // Skip if offscreen
+        if (screenY < -20 || screenY > h + 20 || screenX < -20 || screenX > w + 20) continue;
 
-        var alpha = 0.03 + wave * 0.35;
+        // Normalized position for color
+        var nx = c / GRID_COLS;
+        var ny = r / GRID_ROWS;
 
-        if (wave > 0.75) {
-          alpha += (wave - 0.75) * 1.2;
+        // Wave intensity (0-1) for brightness
+        var waveNorm = (waveH + 95) / 190; // normalize roughly to 0-1
+        waveNorm = Math.max(0, Math.min(1, waveNorm));
+
+        // Color based on horizontal position + wave height
+        var cr, cg, cb;
+        if (nx < 0.3) {
+          // Cyan/Teal zone
+          var t = nx / 0.3;
+          cr = Math.floor(10 + t * 30 + waveNorm * 50);
+          cg = Math.floor(120 + waveNorm * 135);
+          cb = Math.floor(180 + waveNorm * 75);
+        } else if (nx < 0.55) {
+          // Blue/Purple zone
+          var t = (nx - 0.3) / 0.25;
+          cr = Math.floor(40 + t * 80 + waveNorm * 60);
+          cg = Math.floor(60 + waveNorm * 100);
+          cb = Math.floor(200 + waveNorm * 55);
+        } else if (nx < 0.75) {
+          // Purple zone
+          var t = (nx - 0.55) / 0.2;
+          cr = Math.floor(120 + t * 60 + waveNorm * 50);
+          cg = Math.floor(30 + waveNorm * 70);
+          cb = Math.floor(200 + waveNorm * 55);
+        } else {
+          // Pink/Magenta zone
+          var t = (nx - 0.75) / 0.25;
+          cr = Math.floor(180 + t * 40 + waveNorm * 35);
+          cg = Math.floor(40 + waveNorm * 80);
+          cb = Math.floor(180 - t * 30 + waveNorm * 50);
         }
 
-        var color = getWaveColor(nx, ny, wave);
-        ctx.fillStyle = 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + alpha + ')';
-        ctx.fillText(ch.char, x, drawY);
+        cr = Math.min(255, cr);
+        cg = Math.min(255, cg);
+        cb = Math.min(255, cb);
+
+        // Alpha: wave peaks are bright, valleys are dim
+        // Also fade with depth (far = slightly dimmer)
+        var depthFade = 0.4 + ny * 0.6;
+        var alpha = (0.08 + waveNorm * 0.85) * depthFade;
+
+        // Extra glow at peaks
+        if (waveNorm > 0.7) {
+          alpha = Math.min(1.0, alpha + (waveNorm - 0.7) * 1.5);
+          // Brighten colors at peaks
+          cr = Math.min(255, cr + 40);
+          cg = Math.min(255, cg + 40);
+          cb = Math.min(255, cb + 30);
+        }
+
+        ctx.fillStyle = 'rgba(' + cr + ',' + cg + ',' + cb + ',' + alpha + ')';
+        ctx.fillText(cell.char, screenX, screenY);
       }
     }
 
