@@ -194,7 +194,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ===== Code System Background (About → Contact) =====
-(function() {
+(function () {
   const canvas = document.getElementById('codeSystemCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
@@ -211,13 +211,13 @@ window.addEventListener('scroll', () => {
 
   // Track mouse position relative to the wrapper
   wrapper.style.pointerEvents = 'auto';
-  wrapper.addEventListener('mousemove', function(e) {
+  wrapper.addEventListener('mousemove', function (e) {
     const rect = wrapper.getBoundingClientRect();
     mouseX = e.clientX - rect.left;
     mouseY = e.clientY - rect.top + wrapper.scrollTop;
     mouseActive = true;
   });
-  wrapper.addEventListener('mouseleave', function() {
+  wrapper.addEventListener('mouseleave', function () {
     mouseActive = false;
     mouseX = -1000;
     mouseY = -1000;
@@ -295,7 +295,7 @@ window.addEventListener('scroll', () => {
         vy: -0.08 - Math.random() * 0.35,
         size: 1 + Math.random() * 2,
         opacity: 0.08 + Math.random() * 0.25,
-        char: ['0','1','<','>','/','{','}',';','(',')','=','+','#','*','&','|'][Math.floor(Math.random() * 16)],
+        char: ['0', '1', '<', '>', '/', '{', '}', ';', '(', ')', '=', '+', '#', '*', '&', '|'][Math.floor(Math.random() * 16)],
         useChar: Math.random() > 0.45,
         life: Math.random() * 200
       });
@@ -309,7 +309,7 @@ window.addEventListener('scroll', () => {
   function updateNodePositions() {
     for (var i = 0; i < nodes.length; i++) {
       var n = nodes[i];
-      
+
       if (mouseActive) {
         var dx = n.x - mouseX;
         var dy = n.y - mouseY;
@@ -413,7 +413,7 @@ window.addEventListener('scroll', () => {
         grad.addColorStop(0.3, 'rgba(99, 102, 241, ' + stream.opacity + ')');
         grad.addColorStop(0.7, 'rgba(139, 92, 246, ' + stream.opacity + ')');
         grad.addColorStop(1, 'rgba(139, 92, 246, 0)');
-        
+
         ctx.beginPath();
         ctx.moveTo(seg.x, stream.y);
         ctx.lineTo(seg.x + seg.length, stream.y);
@@ -532,11 +532,11 @@ window.addEventListener('scroll', () => {
   }
   window.addEventListener('scroll', checkVisibility, { passive: true });
 
-  window.addEventListener('resize', function() { resize(); });
+  window.addEventListener('resize', function () { resize(); });
 })();
 
 // ===== WAU Logo Code Rain Animation =====
-(function() {
+(function () {
   function initLogoCodeRain(canvasId) {
     var canvas = document.getElementById(canvasId);
     if (!canvas) return;
@@ -616,3 +616,138 @@ window.addEventListener('scroll', () => {
   initLogoCodeRain('navLogoCanvas');
   initLogoCodeRain('footerLogoCanvas');
 })();
+
+// ===== Contact Section: Binary Code Wave Animation =====
+(function () {
+  var canvas = document.getElementById('contactWaveCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var section = canvas.closest('.contact');
+  var w, h, dpr;
+  var animId;
+  var isVisible = false;
+
+  // Binary characters grid
+  var cols, rows;
+  var cellW = 28, cellH = 22;
+  var chars = [];
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = section.offsetWidth;
+    h = section.offsetHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    initChars();
+  }
+
+  function initChars() {
+    cols = Math.ceil(w / cellW) + 2;
+    rows = Math.ceil(h / cellH) + 4;
+    chars = [];
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        chars.push({
+          char: Math.random() > 0.5 ? '1' : '0',
+          changeRate: 0.002 + Math.random() * 0.008
+        });
+      }
+    }
+  }
+
+  function getWaveColor(nx, ny, wave) {
+    var r, g, b;
+    var t = nx;
+    var brightness = 0.3 + wave * 0.7;
+
+    if (t < 0.33) {
+      var lt = t / 0.33;
+      r = Math.floor(20 + lt * 40);
+      g = Math.floor(140 + lt * 30 + wave * 60);
+      b = Math.floor(220 + lt * 35);
+    } else if (t < 0.66) {
+      var lt = (t - 0.33) / 0.33;
+      r = Math.floor(60 + lt * 80 + wave * 40);
+      g = Math.floor(70 + wave * 50);
+      b = Math.floor(220 + lt * 20);
+    } else {
+      var lt = (t - 0.66) / 0.34;
+      r = Math.floor(140 + lt * 80 + wave * 40);
+      g = Math.floor(50 + lt * 30 + wave * 40);
+      b = Math.floor(200 - lt * 30);
+    }
+
+    r = Math.min(255, Math.floor(r * brightness));
+    g = Math.min(255, Math.floor(g * brightness));
+    b = Math.min(255, Math.floor(b * brightness));
+
+    return { r: r, g: g, b: b };
+  }
+
+  function animate(timestamp) {
+    if (!isVisible) return;
+    var time = timestamp * 0.001;
+    ctx.clearRect(0, 0, w, h);
+
+    ctx.font = '11px monospace';
+    ctx.textBaseline = 'middle';
+
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        var idx = r * cols + c;
+        var ch = chars[idx];
+
+        if (Math.random() < ch.changeRate) {
+          ch.char = Math.random() > 0.5 ? '1' : '0';
+        }
+
+        var x = c * cellW;
+        var y = r * cellH;
+
+        var nx = c / cols;
+        var ny = r / rows;
+
+        var wave1 = Math.sin(nx * 4.5 + time * 0.6 + ny * 2.0) * 0.5 + 0.5;
+        var wave2 = Math.sin(nx * 3.0 - time * 0.4 + ny * 3.5) * 0.5 + 0.5;
+        var wave3 = Math.sin((nx + ny) * 3.0 + time * 0.8) * 0.5 + 0.5;
+        var wave = (wave1 * 0.5 + wave2 * 0.3 + wave3 * 0.2);
+
+        var displacement = wave * 12 - 6;
+        var drawY = y + displacement;
+
+        var alpha = 0.03 + wave * 0.35;
+
+        if (wave > 0.75) {
+          alpha += (wave - 0.75) * 1.2;
+        }
+
+        var color = getWaveColor(nx, ny, wave);
+        ctx.fillStyle = 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + alpha + ')';
+        ctx.fillText(ch.char, x, drawY);
+      }
+    }
+
+    animId = requestAnimationFrame(animate);
+  }
+
+  resize();
+
+  var contactObserver = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting) {
+      if (!isVisible) {
+        isVisible = true;
+        animId = requestAnimationFrame(animate);
+      }
+    } else {
+      isVisible = false;
+      if (animId) cancelAnimationFrame(animId);
+    }
+  }, { threshold: 0.0 });
+  contactObserver.observe(section);
+
+  window.addEventListener('resize', resize);
+})();
+
