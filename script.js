@@ -627,8 +627,8 @@ window.addEventListener('scroll', () => {
   var animId;
   var isVisible = false;
 
-  var CELL_W = 16;
-  var CELL_H = 14;
+  var CELL_W = 15;
+  var CELL_H = 13;
   var cols, rows;
   var chars = [];
 
@@ -653,7 +653,7 @@ window.addEventListener('scroll', () => {
     if (!isVisible) return;
     var time = timestamp * 0.001;
     ctx.clearRect(0, 0, w, h);
-    ctx.font = '12px monospace';
+    ctx.font = '11px monospace';
     ctx.textBaseline = 'top';
 
     for (var r = 0; r < rows; r++) {
@@ -669,52 +669,50 @@ window.addEventListener('scroll', () => {
         var nx = c / cols;
         var ny = r / rows;
 
-        // Create wave ridges using sin waves
-        // These create bands of brightness across the section
-        var wave1 = Math.sin(ny * 18 + nx * 3 + time * 0.7);
-        var wave2 = Math.sin(ny * 12 - nx * 5 + time * 0.5);
-        var wave3 = Math.sin(ny * 8 + nx * 7 + time * 0.9);
-        var wave4 = Math.sin((ny + nx) * 6 - time * 0.6);
+        // Broader, more organic rolling wave forms
+        // Fewer but wider frequencies = more like the reference 3D terrain
+        var wave1 = Math.sin(ny * 6.5 + nx * 2.5 + time * 0.55);
+        var wave2 = Math.sin(ny * 4.0 - nx * 3.8 + time * 0.4);
+        var wave3 = Math.sin(ny * 9.0 + nx * 1.5 + time * 0.75);
+        var wave4 = Math.cos((ny * 3.0 + nx * 5.0) + time * 0.35);
+        var wave5 = Math.sin(ny * 14.0 + nx * 0.5 - time * 0.6) * 0.5;
 
-        // Combine waves (-1 to 1 range)
-        var combined = wave1 * 0.35 + wave2 * 0.25 + wave3 * 0.2 + wave4 * 0.2;
-
-        // Map to 0-1 range
+        // Combine waves
+        var combined = wave1 * 0.3 + wave2 * 0.25 + wave3 * 0.2 + wave4 * 0.15 + wave5 * 0.1;
         var waveVal = combined * 0.5 + 0.5;
 
-        // SHARPEN: only the top of each wave crest should be visible
-        // This creates narrow bright ridges with dark valleys
-        var ridge = Math.pow(waveVal, 4);
+        // Use pow(2.5) for wider visible ridges (more like the reference)
+        var ridge = Math.pow(waveVal, 2.5);
 
-        // Vertical displacement for wave motion
-        var dy = combined * 8;
+        // Vertical displacement for flowing motion
+        var dy = combined * 14;
         var drawY = baseY + dy;
 
-        // Color: cyan/blue (left) → purple (center) → pink (right)
+        // Color: cyan/teal (left) → blue → purple → pink/magenta (right)
         var cr, cg, cb;
-        if (nx < 0.3) {
-          cr = 15 + ridge * 80;
-          cg = 100 + ridge * 155;
-          cb = 180 + ridge * 75;
-        } else if (nx < 0.5) {
-          var t = (nx - 0.3) / 0.2;
-          cr = 30 + t * 70 + ridge * 70;
-          cg = 60 + ridge * 120;
-          cb = 200 + ridge * 55;
-        } else if (nx < 0.7) {
-          var t = (nx - 0.5) / 0.2;
-          cr = 100 + t * 60 + ridge * 60;
-          cg = 30 + ridge * 80;
+        if (nx < 0.25) {
+          cr = 10 + ridge * 60;
+          cg = 110 + ridge * 145;
           cb = 190 + ridge * 65;
+        } else if (nx < 0.45) {
+          var t = (nx - 0.25) / 0.2;
+          cr = 20 + t * 50 + ridge * 80;
+          cg = 70 + ridge * 110;
+          cb = 200 + ridge * 55;
+        } else if (nx < 0.65) {
+          var t = (nx - 0.45) / 0.2;
+          cr = 70 + t * 70 + ridge * 70;
+          cg = 30 + ridge * 70;
+          cb = 195 + ridge * 60;
         } else {
-          var t = (nx - 0.7) / 0.3;
-          cr = 160 + t * 60 + ridge * 35;
-          cg = 40 + ridge * 80;
-          cb = 160 - t * 30 + ridge * 60;
+          var t = (nx - 0.65) / 0.35;
+          cr = 140 + t * 70 + ridge * 45;
+          cg = 30 + ridge * 80;
+          cb = 170 - t * 30 + ridge * 60;
         }
 
-        // Alpha: sharp contrast — valleys nearly invisible, ridges bright
-        var alpha = 0.02 + ridge * 0.88;
+        // Alpha: valleys dim, ridges bright
+        var alpha = 0.03 + ridge * 0.82;
 
         cr = Math.min(255, Math.floor(cr));
         cg = Math.min(255, Math.floor(cg));
