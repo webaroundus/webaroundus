@@ -2006,3 +2006,68 @@ html[lang="ka"] .section-title {
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(99, 102, 241, .3);
 }
+/* ===== STRIPE THEME ===== */
+.stripe-content {
+  background: linear-gradient(135deg, #0a0a1a, #1a103d);
+  color: #c4b5fd;
+}
+.stripe-hero {
+  background: linear-gradient(135deg, rgba(99, 102, 241, .15), rgba(139, 92, 246, .15));
+}
+.stripe-btn {
+  background: linear-gradient(135deg, #635bff, #7c3aed) !important;
+  color: white !important;
+}
+
+/* ===== LINEAR THEME ===== */
+.linear-content {
+  background: linear-gradient(135deg, #0c0a1a, #14102d);
+  color: #a5b4fc;
+}
+.linear-hero {
+  background: linear-gradient(135deg, rgba(99, 102, 241, .12), rgba(59, 130, 246, .15));
+}
+.linear-btn {
+  background: linear-gradient(135deg, #5e6ad2, #3b82f6) !important;
+  color: white !important;
+}
+
+/* ===== VERCEL THEME ===== */
+.vercel-content {
+  background: linear-gradient(135deg, #0a0a0a, #171717);
+  color: #e5e5e5;
+}
+.vercel-hero {
+  background: linear-gradient(135deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .03));
+}
+.vercel-btn {
+  background: linear-gradient(135deg, #fff, #e5e5e5) !important;
+  color: #000 !important;
+}
+
+/* ===== CLICKABLE PROJECT CARDS ===== */
+a.project-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+a.project-card:hover {
+  text-decoration: none;
+}
+
+/* Visit Website link indicator */
+.project-link-indicator {
+  padding: 12px 24px 16px;
+  text-align: center;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--primary-light);
+  opacity: 0;
+  transform: translateY(5px);
+  transition: all .3s ease;
+  border-top: 1px solid rgba(99, 102, 241, .1);
+}
+a.project-card:hover .project-link-indicator {
+  opacity: 1;
+  transform: translateY(0);
+}
