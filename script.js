@@ -627,8 +627,8 @@ window.addEventListener('scroll', () => {
   var animId;
   var isVisible = false;
 
-  var CELL_W = 20;
-  var CELL_H = 16;
+  var CELL_W = 16;
+  var CELL_H = 14;
   var cols, rows;
   var chars = [];
 
@@ -653,76 +653,75 @@ window.addEventListener('scroll', () => {
     if (!isVisible) return;
     var time = timestamp * 0.001;
     ctx.clearRect(0, 0, w, h);
-    ctx.font = '13px monospace';
+    ctx.font = '12px monospace';
     ctx.textBaseline = 'top';
 
     for (var r = 0; r < rows; r++) {
       for (var c = 0; c < cols; c++) {
         var idx = r * cols + c;
 
-        // Randomly change some chars each frame
-        if (Math.random() < 0.003) {
+        if (Math.random() < 0.002) {
           chars[idx] = chars[idx] === '1' ? '0' : '1';
         }
 
         var baseX = c * CELL_W;
         var baseY = r * CELL_H;
-
-        // Normalized coords
         var nx = c / cols;
         var ny = r / rows;
 
-        // Multiple wave layers
-        var w1 = Math.sin(nx * 8 + time * 0.8 + ny * 3) * 0.5 + 0.5;
-        var w2 = Math.sin(nx * 5 - time * 0.5 + ny * 6) * 0.5 + 0.5;
-        var w3 = Math.cos((nx * 4 + ny * 2) + time * 1.1) * 0.5 + 0.5;
-        var w4 = Math.sin(nx * 12 + time * 1.5) * 0.3 + 0.5;
-        var wave = w1 * 0.35 + w2 * 0.25 + w3 * 0.25 + w4 * 0.15;
+        // Create wave ridges using sin waves
+        // These create bands of brightness across the section
+        var wave1 = Math.sin(ny * 18 + nx * 3 + time * 0.7);
+        var wave2 = Math.sin(ny * 12 - nx * 5 + time * 0.5);
+        var wave3 = Math.sin(ny * 8 + nx * 7 + time * 0.9);
+        var wave4 = Math.sin((ny + nx) * 6 - time * 0.6);
 
-        // Vertical displacement (creates wave shape)
-        var dy = (wave - 0.5) * 18;
-        var drawX = baseX;
+        // Combine waves (-1 to 1 range)
+        var combined = wave1 * 0.35 + wave2 * 0.25 + wave3 * 0.2 + wave4 * 0.2;
+
+        // Map to 0-1 range
+        var waveVal = combined * 0.5 + 0.5;
+
+        // SHARPEN: only the top of each wave crest should be visible
+        // This creates narrow bright ridges with dark valleys
+        var ridge = Math.pow(waveVal, 4);
+
+        // Vertical displacement for wave motion
+        var dy = combined * 8;
         var drawY = baseY + dy;
 
-        // Color: cyan (left) → blue → purple → pink (right)
+        // Color: cyan/blue (left) → purple (center) → pink (right)
         var cr, cg, cb;
-        if (nx < 0.25) {
-          cr = 20 + wave * 50;
-          cg = 140 + wave * 115;
-          cb = 200 + wave * 55;
+        if (nx < 0.3) {
+          cr = 15 + ridge * 80;
+          cg = 100 + ridge * 155;
+          cb = 180 + ridge * 75;
         } else if (nx < 0.5) {
-          var t = (nx - 0.25) / 0.25;
-          cr = 30 + t * 60 + wave * 60;
-          cg = 80 + wave * 100;
-          cb = 210 + wave * 45;
-        } else if (nx < 0.75) {
-          var t = (nx - 0.5) / 0.25;
-          cr = 90 + t * 80 + wave * 50;
-          cg = 40 + wave * 60;
-          cb = 200 + wave * 55;
+          var t = (nx - 0.3) / 0.2;
+          cr = 30 + t * 70 + ridge * 70;
+          cg = 60 + ridge * 120;
+          cb = 200 + ridge * 55;
+        } else if (nx < 0.7) {
+          var t = (nx - 0.5) / 0.2;
+          cr = 100 + t * 60 + ridge * 60;
+          cg = 30 + ridge * 80;
+          cb = 190 + ridge * 65;
         } else {
-          var t = (nx - 0.75) / 0.25;
-          cr = 170 + t * 50 + wave * 35;
-          cg = 50 + wave * 70;
-          cb = 180 - t * 40 + wave * 50;
+          var t = (nx - 0.7) / 0.3;
+          cr = 160 + t * 60 + ridge * 35;
+          cg = 40 + ridge * 80;
+          cb = 160 - t * 30 + ridge * 60;
         }
 
-        // Brightness / alpha from wave
-        var alpha = 0.06 + wave * 0.65;
-        if (wave > 0.72) {
-          alpha += (wave - 0.72) * 2.0;
-          cr = Math.min(255, cr + 50);
-          cg = Math.min(255, cg + 50);
-          cb = Math.min(255, cb + 40);
-        }
-        alpha = Math.min(0.95, alpha);
+        // Alpha: sharp contrast — valleys nearly invisible, ridges bright
+        var alpha = 0.02 + ridge * 0.88;
 
         cr = Math.min(255, Math.floor(cr));
         cg = Math.min(255, Math.floor(cg));
         cb = Math.min(255, Math.floor(cb));
 
-        ctx.fillStyle = 'rgba(' + cr + ',' + cg + ',' + cb + ',' + alpha.toFixed(2) + ')';
-        ctx.fillText(chars[idx], drawX, drawY);
+        ctx.fillStyle = 'rgba(' + cr + ',' + cg + ',' + cb + ',' + alpha.toFixed(3) + ')';
+        ctx.fillText(chars[idx], baseX, drawY);
       }
     }
 
